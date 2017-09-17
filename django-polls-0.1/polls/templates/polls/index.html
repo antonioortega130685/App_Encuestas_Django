@@ -1,0 +1,44 @@
+{% load static %}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+	<title>Bienvenido/a</title>
+
+	<link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}" />
+</head>
+
+<body class='d5'>
+	<div class='f'>
+	<h2 class='d2'>Bienvenido/a</h2>
+	<h1>Encuestas en la web</h1>
+	<h4  class='d'>Sitio de encuestas creado con Django</h4>
+	</div>
+	<!--<div class='f2'>
+		<p class='d2'>Login</p>
+	</div> -->
+	<div class='f1'>
+	<h3 class='g'>Activas:</h3>
+	{% if latest_question_list %}
+	<ul>
+		{% for question in latest_question_list %}
+    	<li><a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a></li>
+    	{% endfor %}
+	</ul>
+	{% else %}
+	<p>No hay encuestas disponibles actualmente.</p>
+	{% endif %}
+	</div>
+	<div>
+		<script>(function(d, s){if(!window.rel){s = d.createElement("script");s.type = "text/javascript";s.async = true;s.id = "radio-de-embedded";s.src = "//www.radio.es/inc/microsite/js/full.js";d.getElementsByTagName("head")[0].appendChild(s);window.rel = true;}}(document));</script><div class="ng-app-embedded"><div ui-view class="microsite embedded-radio-player" data-playerwidth="340px" data-playertype="web_embedded" data-playstation="swissjazz" data-autoplay="true" data-apikey="df04ff67dd3339a6fc19c9b8be164d5b5245ae93"></div></div><noscript><a href="//swissjazz.radio.es" target="_blank">Radio Swiss Jazz en radio.es</a></noscript>
+	</div>
+	<div>
+		<h4>Creado usando http://www.djangoproject.com<h4>
+		<h4>Editado y personalizado por <a href="https://www.linkedin.com/in/antonio-ortega-2b23b1127/"/>Antonio Ortega</h4>
+	</div>
+	
+</body>
+
+
+</html>

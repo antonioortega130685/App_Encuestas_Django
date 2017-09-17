@@ -1,0 +1,162 @@
+{% load static %}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+	<title>Resultados</title>
+
+	<link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}" />
+</head>
+
+<body class='f5'>
+<h1>Votación</h1>
+
+<ul>
+{% for choice in question.choice_set.all %}
+    <li>{{ choice.choice_text }} => {{ choice.votes }} vote{{ choice.votes|pluralize }}</li>
+{% endfor %}
+</ul>
+
+<form action="{% url 'polls:detail' question.id %}" >
+<input type="submit" value="¿Desea votar de nuevo?"/>
+</form>
+
+<form action="{% url 'polls:index' %}" >
+<input type="submit" value="Inicio"/>
+</form>
+
+<!--# Looking for a way to insert a Javacript Graph... still unsuccessful
+
+{% block content %}
+  <canvas id="productsChart" width="300" height="300"></canvas>
+{% endblock %}
+
+{% block scripts %}
+<script>
+var ctx = document.getElementById("productsChart");
+var choices = JSON.parse('{{ choices|safe }}');
+var votesn = JSON.parse('{{ votesn|safe }}');
+var productsChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+        labels: choices,
+        datasets: [{
+            label: 'Produtos',
+            data: votesn,
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255,99,132,1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero:true
+                }
+            }]
+        }
+    }
+});
+</script>
+{% endblock %}
+
+-->
+
+<!--
+<script src="{% static 'polls/Chart.min.js' %}"></script>
+<div id="canvas-holder">
+<canvas id="productsChart" width="300" height="300"></canvas>
+
+
+<script type="text/javascript">
+//<![CDATA[
+var ctx = document.getElementById("productsChart");
+var choices = JSON.parse('{{ choices|safe }}');
+var votesn = JSON.parse('{{ votesn|safe }}');
+
+var productsChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+        labels: choices,
+        datasets: [{
+            label: 'Resultados',
+            data: votesn,
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255,99,132,1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero:true
+                }
+            }]
+        }
+    }
+});
+//var pieData = [
+//				{
+//					value: votesn,
+//					color:"#1f1f14",
+//					highlight: "#001a4d",
+//					label: choices
+//				},
+//				{
+//					value: 1,
+//					color: "#5d5d3c",
+//					highlight: "#a9ad47",
+//					label: "Gato"
+//				},
+//				{
+//					value: 8,
+//					color: "#9c9c63",
+///					highlight: "#331a00",
+	//				label: "Unicornio"
+	//			},
+	//			{
+	//				value: 2,
+	//				color: "#ebebe0",
+	//				highlight: "#999999",
+	//				label: "Tiburón"
+	//			},
+				
+	//		];
+//var ctx = document.getElementById("chart-area").getContext("2d");
+//window.myPie = new Chart(ctx).Pie(pieData);	
+//]]>
+</script>
+</div>
+-->
+</body>
