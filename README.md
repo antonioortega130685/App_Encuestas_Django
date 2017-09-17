@@ -1,6 +1,6 @@
 # App_Encuestas_Django
 
-Aplicación web de encuestas, realizado en Django 1.11, con Python 3.5, Html y Css, usando el tutorial de la página http://www.djangorpoject.com.
+Aplicación web de encuestas, realizado en Django 1.11, con Python 3.5, Html y Css.
 
 La página de admin contiene un superusuario de nombre tony y clave alfredoortega
 
